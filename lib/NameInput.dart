@@ -3,9 +3,14 @@ import 'package:flutter/material.dart';
 class NameInput extends StatelessWidget {
   final myController = TextEditingController();
 
+  final Function(String name) onSaveClicked;
+
+  NameInput({super.key, required this.onSaveClicked});
+
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Padding(
           padding: const EdgeInsets.all(16.0),
@@ -22,7 +27,7 @@ class NameInput extends StatelessWidget {
         OutlinedButton(
           onPressed: () {
             final restaurantName = myController.text;
-            print('Your restaurant name is $restaurantName');
+            onSaveClicked(restaurantName);
           },
           child: Text('Save'),
         ),
