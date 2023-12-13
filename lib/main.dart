@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spin_the_bee/ListOfRestaurants.dart';
 import 'package:spin_the_bee/NameInput.dart';
 import 'package:spin_the_bee/SpinTheWheelButton.dart';
 
@@ -12,6 +13,8 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyApp extends State<MyApp> {
+  final List<String> restaurantNames = [];
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -26,7 +29,17 @@ class _MyApp extends State<MyApp> {
         ),
         body: Center(
           child: Column(
-            children: [NameInput(), SpinTheWheelButton()],
+            children: [
+              ListOfRestaurants(names: restaurantNames),
+              NameInput(
+                onSaveClicked: (name) {
+                  setState(() {
+                    restaurantNames.add(name);
+                  });
+                },
+              ),
+              SpinTheWheelButton()
+            ],
           ),
         ),
       ),
