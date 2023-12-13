@@ -14,6 +14,7 @@ class MyApp extends StatefulWidget {
 
 class _MyApp extends State<MyApp> {
   final List<String> restaurantNames = [];
+  var winnerRestaurant = "";
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +39,21 @@ class _MyApp extends State<MyApp> {
                   });
                 },
               ),
-              SpinTheWheelButton()
+              SpinTheWheelButton(
+                onSpinButtonTapped: () {
+                  final newTemoraryRestaurantNames = restaurantNames.toList();
+                  newTemoraryRestaurantNames.shuffle();
+                  final firstElement = newTemoraryRestaurantNames.first;
+
+                  setState(() {
+                    winnerRestaurant = firstElement;
+                  });
+                },
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 32.0),
+                child: Text("Winner restaurant is: " + winnerRestaurant),
+              )
             ],
           ),
         ),

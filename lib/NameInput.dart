@@ -15,7 +15,7 @@ class NameInput extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(16.0),
           child: SizedBox(
-            width: 300,
+            width: 230,
             child: TextField(
               controller: myController,
               decoration: InputDecoration(
